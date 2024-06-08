@@ -1,5 +1,6 @@
 package com.example.mysite._core.config;
 
+import com.example.mysite._core.interceptor.LoginInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -13,8 +14,8 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new LoginInterceptor())
-                .addPathPatterns("/guest/**","/comp/**","/applyForm/","/positionForm/","/board/**","/reply/**")
-                .excludePathPatterns("/board/mainForm","/board/{id:\\d+}","/guest/jobSearch","/comp/jobopen/{id:\\d+}" ,"/guest/jobopenSearch");
+                .addPathPatterns("")
+                .excludePathPatterns("");
     }
 
     //외부이미지 경로설정
@@ -22,11 +23,15 @@ public class WebMvcConfig implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         WebMvcConfigurer.super.addResourceHandlers(registry);
 
-        registry.addResourceHandler("/image/**")
-                .addResourceLocations("file:./image/")
+        registry.addResourceHandler("/images/**")
+                .addResourceLocations("file:./images/")
                 .setCachePeriod(60 * 60) // 초 단위 => 한시간
                 .resourceChain(true)
                 .addResolver(new PathResourceResolver());
+
+
     }
+
+
 
 }

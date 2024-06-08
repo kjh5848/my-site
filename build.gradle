@@ -23,6 +23,13 @@ repositories {
 }
 
 dependencies {
+
+    // JUnit 5 의존성
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.0'
+
+    // 기타 테스트 의존성 추가
+    testImplementation 'org.assertj:assertj-core:3.21.0'
+    testImplementation 'org.mockito:mockito-core:4.5.1'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     compileOnly 'org.projectlombok:lombok'
@@ -30,19 +37,18 @@ dependencies {
     runtimeOnly 'com.h2database:h2'
     runtimeOnly 'com.mysql:mysql-connector-j'
     annotationProcessor 'org.projectlombok:lombok'
+
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
-    implementation group: 'javax.servlet', name: 'jstl', version: '1.2'
-    implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
-
-
+    runtimeOnly group: 'org.apache.taglibs', name: 'taglibs-standard-impl', version: '1.2.5'
+    implementation group: 'org.apache.taglibs', name: 'taglibs-standard-spec', version: '1.2.5'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: '11.0.0-M20'
+    implementation 'org.springframework.boot:spring-boot-starter-tomcat' // Tomcat
+    compileOnly group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
 }
-node {
-    version = '18.16.0' // Node.js 버전 설정
-    npmVersion = '9.6.5' // npm 버전 설정
-    download = true // Node.js와 npm을 자동으로 다운로드
-}
+
 
 task buildSass(type: NpmTask) {
     args = ['run', 'build-scss']
@@ -50,10 +56,23 @@ task buildSass(type: NpmTask) {
     outputs.dir 'src/main/resources/static/css'
 }
 
-tasks.withType(JavaCompile) {
-    dependsOn buildSass
+task buildJs(type: NpmTask) {
+    args = ['run', 'build-js']
+    inputs.dir 'src/main/resources/static/js'
+    outputs.dir 'src/main/resources/static/dist'
 }
 
+// processResources 작업이 buildSass와 buildJs 작업에 의존하도록 설정
+processResources {
+    dependsOn buildSass, buildJs
+    from(buildSass.outputs)
+    from(buildJs.outputs)
+}
+
+tasks.withType(JavaCompile) {
+    dependsOn buildSass, buildJs
+}
 tasks.named('test') {
     useJUnitPlatform()
 }
+

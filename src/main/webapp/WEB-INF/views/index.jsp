@@ -1,44 +1,30 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ include file="/webapp/WEB-INF/views/layout/Header.jsp" %>
+
+<%--헤더--%>
+<%@ include file="layout/Header.jsp" %>
 
 <body>
 
-<div class="p-5 bg-primary text-white text-center">
-    <h1>My site</h1>
-</div>
-
-<%@ include file="layout/NavBar.jsp" %>
-
-<div class="card mx-5 my-5">
-    <div class="card-body">
-        <h4 class="card-title">제목</h4>
-        <p class="card-text">내용</p>
-        <a href="#" class="card-link">일자</a>
-        <a href="#" class="card-link">글쓴이</a>
+<div class="grid-wrapper">
+    <div class="banner" style="background-image: url('./images/baner.jpg');">
+        <h1>My Site!!</h1>
     </div>
-</div>
 
-<div class="card mx-5 my-5">
-    <div class="card-body">
-        <h4 class="card-title">제목</h4>
-        <p class="card-text">내용</p>
-        <a href="#" class="card-link">일자</a>
-        <a href="#" class="card-link">글쓴이</a>
-    </div>
-</div>
+<%--네브 바--%>
+    <%@ include file="layout/NavBar.jsp" %>
 
-<div class="card mx-5 my-5">
-    <div class="card-body">
-        <h4 class="card-title">제목</h4>
-        <p class="card-text">내용</p>
-        <a href="#" class="card-link">일자</a>
-        <a href="#" class="card-link">글쓴이</a>
-    </div>
-</div>
+<%--로그인 모달--%>
+    <%@ include file="components/oauth/login-modal.jsp" %>
 
-<div class="mt-5 p-4 bg-dark text-white text-center">
-    <p>Footer</p>
-</div>
+<%--회원가입 모달--%>
+    <%@ include file="components/oauth/signup-modal.jsp" %>
 
+<%--메인 카드박스--%>
+    <%@ include file="components/card/main-card.jsp" %>
+
+<%--푸터--%>
+    <%@ include file="layout/footer.jsp" %>
+
+</div>
+<script  src="/dist/bundle.js"></script>
 </body>
-</html>

@@ -1,13 +1,22 @@
 {
   "name": "my-site",
   "version": "1.0.0",
-  "description": "A Spring Boot project with SCSS support",
   "scripts": {
+    "build-js": "webpack",
+    "watch-js": "webpack --watch",
     "build-scss": "sass src/main/resources/static/scss:src/main/resources/static/css --no-source-map",
+    "watch-scss": "sass --watch src/main/resources/static/scss:src/main/resources/static/css",
     "clean-scss": "rm -rf src/main/resources/static/css",
-    "install": "npm install"
+    "watch-all": "concurrently \"npm run watch-js\" \"npm run watch-scss\""
   },
   "devDependencies": {
-    "sass": "^1.56.0"
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4",
+    "babel-loader": "^8.3.0",
+    "@babel/core": "^7.23.0",
+    "@babel/preset-env": "^7.23.2",
+    "sass": "^1.56.0",
+    "concurrently": "^8.2.0"
   }
 }
+
