@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '3.3.0'
     id 'io.spring.dependency-management' version '1.1.5'
+    id 'com.github.node-gradle.node' version '6.0.0'
 }
 
 group = 'com.example'
@@ -31,11 +32,26 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-    
+
     implementation group: 'javax.servlet', name: 'jstl', version: '1.2'
     implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
 
 
+}
+node {
+    version = '18.16.0' // Node.js 버전 설정
+    npmVersion = '9.6.5' // npm 버전 설정
+    download = true // Node.js와 npm을 자동으로 다운로드
+}
+
+task buildSass(type: NpmTask) {
+    args = ['run', 'build-scss']
+    inputs.dir 'src/main/resources/static/scss'
+    outputs.dir 'src/main/resources/static/css'
+}
+
+tasks.withType(JavaCompile) {
+    dependsOn buildSass
 }
 
 tasks.named('test') {

@@ -1,0 +1,13 @@
+{
+  "name": "my-site",
+  "version": "1.0.0",
+  "description": "A Spring Boot project with SCSS support",
+  "scripts": {
+    "build-scss": "sass src/main/resources/static/scss:src/main/resources/static/css --no-source-map",
+    "clean-scss": "rm -rf src/main/resources/static/css",
+    "install": "npm install"
+  },
+  "devDependencies": {
+    "sass": "^1.56.0"
+  }
+}
