@@ -1,0 +1,17 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.grid-wrapper {
+  display: grid;
+  grid-template-rows: 200px auto auto; /* 고정 높이: 네브바(70px), 배너(150px) */
+  height: 100vh;
+}
+
+
+.main-content {
+  padding: 20px;
+}
+
+
