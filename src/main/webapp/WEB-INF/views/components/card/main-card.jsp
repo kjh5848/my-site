@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
-<div class="container my-1">
-    <div class="card mx-5 my-5">
+<div class="container my-4">
+    <div class="card mx-5 my-2">
         <div class="card-body d-flex justify-content-between">
             <div>
                 <h4 class="card-title text-primary">제목</h4>

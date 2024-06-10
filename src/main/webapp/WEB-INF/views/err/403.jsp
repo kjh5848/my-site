@@ -1,4 +1,4 @@
-<%@ include file="/webapp/WEB-INF/views/layout/Header.jsp" %>
+<%@ include file="/webapp/WEB-INF/views/layout/header.jsp" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <div class="container my-3">
