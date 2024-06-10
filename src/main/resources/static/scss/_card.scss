@@ -1,21 +1,26 @@
 .card {
-    border: none;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
 .card-body {
-    padding: 2rem;
+  padding: 1rem;
 }
+
 .card-title {
-    font-weight: bold;
+  font-weight: bold;
 }
+
 .card-text {
-    color: #6c757d;
+  color: #6c757d;
 }
+
 .card-link {
-    color: #007bff;
+  color: #007bff;
 }
+
 .card-link:hover {
-    text-decoration: none;
-    color: #0056b3;
+  text-decoration: none;
+  color: #0056b3;
 }
