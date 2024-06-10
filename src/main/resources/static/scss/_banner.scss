@@ -1,0 +1,26 @@
+/* 배너 스타일 */
+.banner {
+    position: relative; /* 배너를 부모 요소로부터 상대적으로 배치 */
+    background-size: cover; /* 배경 이미지를 컨테이너에 맞게 조절 */
+    background-position: center; /* 배경 이미지를 중앙에 배치 */
+    color: black; /* 텍스트 색상을 흰색으로 설정 */
+    padding: 5rem 1rem; /* 배너의 여백 설정 (위아래 5rem, 좌우 1rem) */
+    text-align: center; /* 텍스트를 가운데 정렬 */
+}
+/* 배너 제목 스타일 */
+.banner h1 {
+    position: relative; /* 제목을 부모 요소로부터 상대적으로 배치 */
+    z-index: 2; /* 제목을 오버레이 위에 배치 */
+    align-items: center;
+    justify-content: center;
+}
+/* 배너 오버레이 스타일 */
+.banner::after {
+    content: ""; /* 빈 내용 */
+    position: absolute; /* 절대 위치 지정 */
+    top: 0; /* 상단 위치 */
+    left: 0; /* 좌측 위치 */
+    width: 100%; /* 오버레이 폭을 100%로 설정 */
+    height: 100%; /* 오버레이 높이를 100%로 설정 */
+    z-index: 1; /* 오버레이를 제목 뒤에 배치 */
+}
